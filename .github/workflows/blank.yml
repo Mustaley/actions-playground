@@ -35,10 +35,9 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-  sendNotifiactions:
-    runs-on: ubuntu-latest
-    if: failure()
-    needs: build
-    steps:
-      - name: Echo fail mesage 
+      - name: Echo fail mesage
+        if: failure()
         run: echo "failed"
+      - name: send succses message
+        if: success()
+        run: echo "ok"
